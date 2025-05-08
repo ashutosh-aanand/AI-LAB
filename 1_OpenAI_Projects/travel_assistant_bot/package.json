@@ -1,0 +1,15 @@
+{
+  "name": "travel_assistant_bot",
+  "version": "1.0.0",
+  "description": "This is my first AI based project. \r I will be integrating openAI models to create a travel assistant bot.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashutosh Anand",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "openai": "^4.97.0"
+  }
+}
