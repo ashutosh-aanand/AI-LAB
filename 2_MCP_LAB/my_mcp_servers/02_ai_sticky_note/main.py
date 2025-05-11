@@ -1,6 +1,29 @@
-def main():
-    print("Hello from 02-ai-sticky-note!")
+from mcp.server.fastmcp import FastMCP
+import os
 
+mcp = FastMCP("NotesMan") # naming my notes manager mcp server
 
-if __name__ == "__main__":
-    main()
+# store notes in a txt file
+
+NOTES_FILE = "notes.txt"
+
+def ensure_file():
+    if not os.path.exists(NOTES_FILE):
+        with open(NOTES_FILE, "w") as f:
+            f.write("")
+
+@mcp.tool()
+def add_note(note: str) -> str:
+    return ""
+
+@mcp.tool()
+def read_notes() -> str:
+    return ""
+
+@mcp.resource("notes://latest")
+def get_latest_note() -> str:
+    return ""
+
+@mcp.prompt()
+def note_summary_prompt() -> str:
+    return ""
