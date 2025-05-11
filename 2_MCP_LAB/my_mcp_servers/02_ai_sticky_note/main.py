@@ -11,9 +11,24 @@ def ensure_file():
         with open(NOTES_FILE, "w") as f:
             f.write("")
 
+# Add a new note
 @mcp.tool()
 def add_note(note: str) -> str:
-    return ""
+    
+    """
+    Append a new note to the notes file
+    args:
+        note (str): the note to be added.
+    return:
+        str: confirmation message indicating that the note was saved.
+    """
+
+    ensure_file()
+    
+    with open(NOTES_FILE, "a") as f:
+        f.write(note + "\n")
+    
+    return "note saved successfully !"
 
 @mcp.tool()
 def read_notes() -> str:
