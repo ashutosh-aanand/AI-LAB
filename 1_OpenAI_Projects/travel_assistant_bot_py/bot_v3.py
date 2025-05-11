@@ -29,7 +29,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 limit = 10
-buffer = 4
+buffer = 2
 
 
 def summarize_conversation(conversation):
@@ -93,9 +93,11 @@ def ask_ai(prompt, conversation):
             print("Summarizing Conversation -----")
             print(f"summary till now {summary}")
             print("-------------------------------------------")
-            conversation = conversation[:1] + \
-                [{"role": "system", "content": summary}] + \
-                conversation[-buffer:]  # conversation[buffer + 1:]
+            # conversation = conversation[:1] + \
+            #     [{"role": "system", "content": summary}] + \
+            #     conversation[-buffer:]  # conversation[buffer + 1:]
+            del conversation[1:-buffer]
+            conversation.insert(1, {"role": "system", "content": summary})
             print(f"conversation after summary {conversation}")
             print("-------------------------------------------")
             print("Conversation cleaned up.")
