@@ -1,7 +1,13 @@
 Learning to create an mcp server:
 ---
 
-we will use mcp python sdk
+MCP is an open protocol designed to standardize how applications provide context to AI models. 
+
+It allows applications to expose data and functionality to AI models in a structured way, similar to how APIs work but specifically tailored for AI interactions.
+
+---
+
+We will use mcp python sdk
 
 install uv
 - package manager better than pip
@@ -49,3 +55,5 @@ Now ask claude to add 2 and 3. It will call our mcp server Mathmind's add tool a
 
 References:
 - video: https://www.youtube.com/watch?v=-8k9lGpGQ6g
+- documentation: https://github.com/modelcontextprotocol/python-sdk
+
