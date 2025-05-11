@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "coincap": {
+            "command": "cmd /c npx",
+            "args": ["coincap-mcp"]
+        }
+    }
+}
