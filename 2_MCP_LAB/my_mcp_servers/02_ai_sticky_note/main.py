@@ -47,10 +47,26 @@ def read_notes() -> str:
         notes = f.read().strip()
     return notes or "No notes yet."
 
+
+# Return last or latest note added
 @mcp.resource("notes://latest")
 def get_latest_note() -> str:
-    return ""
+    """
+    Read and return the latest or last note
 
+    Returns:
+        str: the latest or last note as a string
+        If no notes exits, a default message is returned.
+    """
+    
+    ensure_file()
+    with open(NOTES_FILE, "r") as f:
+        notes_lines = f.readlines()
+        latest_note = notes_lines[-1].strip() if notes_lines else "No notes"
+    return latest_note
+
+
+# Generate a notes summarisation prompt
 @mcp.prompt()
 def note_summary_prompt() -> str:
     return ""
