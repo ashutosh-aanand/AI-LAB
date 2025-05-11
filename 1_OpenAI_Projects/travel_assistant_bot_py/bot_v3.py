@@ -34,11 +34,15 @@ buffer = 2
 
 def summarize_conversation(conversation):
     """
-    Function to summarize the last 5 messages in the conversation.
+    Function to summarize a subset of conversation.
     """
     try:
         # Create a summary prompt
-        summary_prompt = "Summarize the following conversation:\n"
+        summary_prompt = (
+            "You are a travel assistant summarizer. Summarize the following conversation "
+            "in a concise and meaningful way. Focus on key points, avoid unnecessary details, "
+            "and ensure the summary captures the main topics discussed:\n\n"
+        )
         for message in conversation:
             summary_prompt += f"{message['role']}: {message['content']}\n"
 
@@ -46,11 +50,11 @@ def summarize_conversation(conversation):
         response = openai.chat.completions.create(
             model="gpt-4.1",
             messages=[
-                {"role": "system", "content": "You are a travel assistant summariser. Summarise this, include the key terms only"},
+                {"role": "system", "content": "You are a travel assistant summariser"},
                 {"role": "user", "content": summary_prompt}
             ],
-            temperature=0.5,
-            max_tokens=50,
+            temperature=0.3,  # lowered the temperature for more deterministic output
+            max_tokens=70,  # increased max tokens for a longer summary
             top_p=1.0,
             frequency_penalty=0.0,
             presence_penalty=0.0,
@@ -153,5 +157,7 @@ After summarizing, the conversation will contain:
     Total: 1 + 1 + 2 = 4 messages in the conversation.
 
     This allows the conversation to be cleaned up while still retaining the context of the last few messages.
+
+I lowered the temperature for summarization prompt, to get a more deterministic output.
 
 """
