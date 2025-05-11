@@ -85,3 +85,6 @@ def notes_summary_prompt() -> str:
     
     return f"Summarise the notes : {notes}"
 
+if __name__ == "__main__":
+    print("Starting mcp server")
+    mcp.run(transport="stdio")
