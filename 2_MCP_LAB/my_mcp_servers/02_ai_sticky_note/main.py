@@ -4,8 +4,7 @@ import os
 mcp = FastMCP("NotesMan") # naming my notes manager mcp server
 
 # store notes in a txt file
-
-NOTES_FILE = "notes.txt"
+NOTES_FILE = os.path.join(os.path.dirname(__file__), "notes.txt")
 
 def ensure_file():
     if not os.path.exists(NOTES_FILE):
