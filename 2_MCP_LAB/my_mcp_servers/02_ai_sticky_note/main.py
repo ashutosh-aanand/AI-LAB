@@ -30,9 +30,22 @@ def add_note(note: str) -> str:
     
     return "note saved successfully !"
 
+
+# Read all notes
 @mcp.tool()
 def read_notes() -> str:
-    return ""
+    """
+    Read and return all notes from the notes file.
+
+    Returns:
+        str: all notes as a single string separated by line breaks.
+        If no notes exits, a default message is returned.
+    """
+    ensure_file()
+
+    with open(NOTES_FILE, "r") as f:
+        notes = f.read().strip()
+    return notes or "No notes yet."
 
 @mcp.resource("notes://latest")
 def get_latest_note() -> str:
