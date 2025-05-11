@@ -135,3 +135,23 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+limit: 
+    Defines the maximum number of messages the conversation can store at any time.
+    In this case, limit = 10, meaning the conversation will store at most 10 messages 
+    (including the system message, user messages, and AI responses).
+buffer:
+    Defines the number of messages to keep after summarizing the conversation.
+    In this case, buffer = 2, meaning that after summarizing, the last 2 messages 
+    (the user message and the AI response) will be kept in the conversation.
+
+After summarizing, the conversation will contain:
+    1. The system message
+    2. The summary of the last 5 messages
+    3. The last 2 messages (user message and AI response)
+    Total: 1 + 1 + 2 = 4 messages in the conversation.
+
+    This allows the conversation to be cleaned up while still retaining the context of the last few messages.
+
+"""
